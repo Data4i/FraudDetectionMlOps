@@ -1,0 +1,11 @@
+enable_cache: False
+
+parameters:
+  data_path: '../data/fraud_detect/PS_20174392719_1491204439457_log.csv'
+
+
+steps:
+  data_loader:
+    enable_cache: False
+
+  
