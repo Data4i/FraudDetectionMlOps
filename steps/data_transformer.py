@@ -7,9 +7,13 @@ import numpy as np
 
 
 @step
-def data_transformer(X_train: pd.DataFrame, X_test: pd.DataFrame) -> Tuple[
+def data_transformer(
+    X_train: pd.DataFrame, X_test: pd.DataFrame, y_train: np.ndarray, y_test: np.ndarray
+) -> Tuple[
     Annotated[np.ndarray, "Transformed X_train"],
+    Annotated[np.ndarray, "y_train"],
     Annotated[np.ndarray, "Transformed X_test"],
+    Annotated[np.ndarray, "y_test"],
 ]:
     """Evaluate the model on the train data
 
@@ -37,4 +41,4 @@ def data_transformer(X_train: pd.DataFrame, X_test: pd.DataFrame) -> Tuple[
     transformed_X_train = ct.transform(X_train)
     transformed_X_test = ct.transform(X_test)
 
-    return transformed_X_train, transformed_X_test
+    return transformed_X_train, y_train, transformed_X_test, y_test

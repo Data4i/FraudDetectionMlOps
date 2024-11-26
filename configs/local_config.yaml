@@ -1,11 +1,29 @@
 enable_cache: False
 
 parameters:
-  data_path: '../data/fraud_detect/PS_20174392719_1491204439457_log.csv'
+  data_path: 'data/fraud_detect/PS_20174392719_1491204439457_log.csv'
 
+model:
+  name: fraud_detection_classifier
+  description: Classifier to predict if a transaction is fraud or not 
+  tags: ['classifier', 'fraud']
 
 steps:
   data_loader:
+    enable_cache: False
+  data_cleaner:
+    enable_cache: False
+  data_splitter: 
+    enable_cache: False
+  data_transformer:
+    enable_cache: False
+  model_trainer:
+    enable_cache: False
+    parameters:
+      random_state: 42
+  model_evaluator:
+    enable_cache: False
+  model_tester:
     enable_cache: False
 
   
