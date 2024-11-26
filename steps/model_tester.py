@@ -3,6 +3,7 @@ from sklearn.base import ClassifierMixin
 from sklearn.metrics import f1_score
 from typing import Annotated
 import numpy as np
+import mlflow
 
 
 @step
@@ -20,8 +21,10 @@ def model_tester(
 
     Return: f1_score (float)
     """
+    mlflow.autolog()
 
     y_pred = model.predict(X_test)
     f1_test_score = f1_score(y_test, y_pred)
+    mlflow.log_metric('testing_f1_score', f1_test_score)
     
     return f1_test_score
